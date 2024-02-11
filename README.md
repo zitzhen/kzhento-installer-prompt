@@ -8,6 +8,8 @@ Art assets are copyrighted as follows:
 * img/background.png: Copyright (C) 2023 Andy Betts <anditosan@kde.org>. CC-BY-SA-4.0 license. Taken from Plasma Workspace Wallpapers, originally named "Mountain" (and given the ID of "Next").
 * img/kubuntu-logo.png, img/installer.png, img/emblem.png: Copyright (C) 2024 Kubuntu Developer <kubuntu-devel@lists.ubuntu.com>. Unknown license. Adapted from the official Kubuntu artwork.
 
+All other files are licensed under the GNU General Public License version 3. Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>, Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>.
+
 ## Architecture
 
 This section serves to explain how kubuntu-installer-prompt's various components work together to provide the Kubuntu ISO boot experience.
@@ -22,7 +24,7 @@ This section serves to explain how kubuntu-installer-prompt's various components
 8. If "Install Kubuntu" is clicked, the installer prompt executes `sudo -E calamares -D8`. The installer prompt then removes the buttons from the screen.
 9. The installer window appears on the user's screen.
 10. If Calamares closes, the installer prompt detects this and exits.
-11. When the installer prompt exits, start-kubuntu-live-env kills Openbox, then runs startlxqt.
+11. When the installer prompt exits, start-kubuntu-live-env kills kwin\_x11 and runs startplasma-x11.
 12. If "Try Kubuntu" is clicked, steps 10 and 11 are executed immediately.
 
 ## Translations

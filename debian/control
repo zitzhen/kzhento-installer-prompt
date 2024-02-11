@@ -23,5 +23,5 @@ Pre-Depends: ${misc:Pre-Depends}
 Description: Live ISO prompt for trying or installing Kubuntu
  This application displays a screen allowing the user to either try or
  install Kubuntu after booting the Kubuntu ISO file. It auto-launches
- when the ISO is first booted, and will either launch Calamares or LXQt,
+ when the ISO is first booted, and will either launch Calamares or Plasma,
  depending on the user's choice.
