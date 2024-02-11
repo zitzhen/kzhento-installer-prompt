@@ -1,0 +1,27 @@
+Source: kubuntu-installer-prompt
+Maintainer: Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
+Uploaders: Aaron Rainbolt <arraybolt3@gmail.com>
+Section: misc
+Priority: optional
+Build-Depends: cmake,
+               debhelper-compat (= 13),
+               extra-cmake-modules,
+               libkf5networkmanagerqt-dev,
+               libkf5widgetsaddons-dev,
+               qtbase5-dev,
+               qttools5-dev
+Standards-Version: 4.6.2
+Vcs-Browser: https://code.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt
+Vcs-Git: git://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt
+Homepage: https://kubuntu.org
+Rules-Requires-Root: no
+
+Package: kubuntu-installer-prompt
+Architecture: any
+Depends: calamares-settings-kubuntu, ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Description: Live ISO prompt for trying or installing Kubuntu
+ This application displays a screen allowing the user to either try or
+ install Kubuntu after booting the Kubuntu ISO file. It auto-launches
+ when the ISO is first booted, and will either launch Calamares or LXQt,
+ depending on the user's choice.

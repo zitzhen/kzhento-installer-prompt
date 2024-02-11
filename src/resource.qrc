@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="background">../img/background.png</file>
+        <file alias="installer">../img/installer.png</file>
+        <file alias="symbol">../img/symbol.png</file>
+        <file alias="logo">../img/kubuntu-logo.png</file>
+        <file alias="arrow-down">../img/arrow-down.svg</file>
+    </qresource>
+</RCC>

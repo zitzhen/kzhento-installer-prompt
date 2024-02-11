@@ -1,0 +1,13 @@
+#!/bin/bash
+# Starts the Kubuntu Live Environment.
+
+export XDG_SESSION_CLASS="user"
+export XDG_SESSION_DESKTOP="KDE"
+export DESKTOP_SESSION="plasma"
+export QT_STYLE_OVERRIDE="breeze"
+
+kwin_x11 &
+sudo -E kubuntu-installer-prompt # This is intentionally *not* backgrounded.
+# If it exits...
+killall kwin_x11
+startplasma-x11
