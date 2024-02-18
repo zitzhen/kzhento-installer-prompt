@@ -1,3 +1,9 @@
+kubuntu-installer-prompt (24.04.2) UNRELEASED; urgency=medium
+
+  * Fix some incorrect references to Lubuntu and LXQt.
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Sun, 11 Feb 2024 15:45:56 -0600
+
 kubuntu-installer-prompt (24.04.1) noble; urgency=medium
 
   * Initial release (rebrand/revamp of lubuntu-installer-prompt).
