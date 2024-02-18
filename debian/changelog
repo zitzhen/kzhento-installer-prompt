@@ -1,10 +1,11 @@
-kubuntu-installer-prompt (24.04.2) UNRELEASED; urgency=medium
+kubuntu-installer-prompt (24.04.2) noble; urgency=medium
 
   * Fix some incorrect references to Lubuntu and LXQt.
   * Specify the license of the Kubuntu artwork properly.
   * Fix background scaling.
+  * Update empty .ts files.
 
- -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Sun, 11 Feb 2024 15:45:56 -0600
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Sun, 18 Feb 2024 14:54:21 -0600
 
 kubuntu-installer-prompt (24.04.1) noble; urgency=medium
 
