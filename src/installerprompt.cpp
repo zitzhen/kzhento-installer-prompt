@@ -41,21 +41,6 @@ InstallerPrompt::InstallerPrompt(QWidget *parent)
     , ui(new Ui::InstallerPrompt) {
     ui->setupUi(this);
 
-    // Set the background image and scale it
-    QPixmap bg(":/background");
-    if (bg.isNull()) {
-        QMessageBox::warning(this, tr("Error"), tr("Background image cannot be loaded."));
-        return;
-    }
-
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->geometry();
-    bg = bg.scaled(screenGeometry.size(), Qt::IgnoreAspectRatio);
-    
-    QPalette palette;
-    palette.setBrush(QPalette::Window, bg);
-    this->setPalette(palette);
-
     updateConnectionInfo();
 
     initLanguageComboBox();
@@ -73,6 +58,33 @@ InstallerPrompt::InstallerPrompt(QWidget *parent)
 InstallerPrompt::~InstallerPrompt()
 {
 
+}
+
+void InstallerPrompt::activateBackground()
+{
+    // Set the background image and scale it
+    QImage image(":/background");
+    if (image.isNull()) {
+        QMessageBox::warning(this, tr("Error"), tr("Background image cannot be loaded."));
+        return;
+    }
+
+    qreal imgRatio = static_cast<qreal>(image.width()) / image.height();
+    qreal screenRatio = static_cast<qreal>(this->width()) / this->height();
+    QImage scaled;
+    if (imgRatio < screenRatio) {
+        scaled = image.scaledToWidth(this->width(), Qt::SmoothTransformation);
+        int yGap = (scaled.height() - this->height()) / 2;
+        scaled = scaled.copy(0, yGap, scaled.width(), this->height());
+    } else {
+        scaled = image.scaledToHeight(this->height(), Qt::SmoothTransformation);
+        int xGap = (scaled.width() - this->width()) / 2;
+        scaled = scaled.copy(xGap, 0, this->width(), scaled.height());
+    }
+    QPixmap bg = QPixmap::fromImage(scaled);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bg);
+    this->setPalette(palette);
 }
 
 void InstallerPrompt::onTryClicked()

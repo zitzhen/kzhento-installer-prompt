@@ -23,6 +23,7 @@ class InstallerPrompt : public QMainWindow {
 public:
     explicit InstallerPrompt(QWidget *parent = nullptr);
     ~InstallerPrompt() override;
+    void activateBackground();
 
 private slots:
     void onTryClicked();

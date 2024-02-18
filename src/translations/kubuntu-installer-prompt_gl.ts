@@ -24,68 +24,74 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.ui" line="386"/>
+        <location filename="../installerprompt.ui" line="389"/>
         <source>  Try Kubuntu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.ui" line="435"/>
+        <location filename="../installerprompt.ui" line="438"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Install Kubuntu onto your system. You can install Kubuntu by itself, or alongside an existing operating system.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.ui" line="447"/>
+        <location filename="../installerprompt.ui" line="453"/>
         <source>  Install Kubuntu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.cpp" line="236"/>
-        <location filename="../installerprompt.cpp" line="260"/>
-        <source>Connected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../installerprompt.cpp" line="46"/>
-        <location filename="../installerprompt.cpp" line="160"/>
-        <location filename="../installerprompt.cpp" line="211"/>
-        <location filename="../installerprompt.cpp" line="285"/>
+        <location filename="../installerprompt.cpp" line="68"/>
+        <location filename="../installerprompt.cpp" line="175"/>
+        <location filename="../installerprompt.cpp" line="226"/>
+        <location filename="../installerprompt.cpp" line="300"/>
+        <location filename="../installerprompt.cpp" line="345"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.cpp" line="46"/>
+        <location filename="../installerprompt.cpp" line="68"/>
         <source>Background image cannot be loaded.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.cpp" line="160"/>
+        <location filename="../installerprompt.cpp" line="175"/>
         <source>Selected Ethernet device has no network!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.cpp" line="211"/>
+        <location filename="../installerprompt.cpp" line="226"/>
         <source>Failed to add WiFi connection.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.cpp" line="236"/>
-        <location filename="../installerprompt.cpp" line="260"/>
+        <location filename="../installerprompt.cpp" line="251"/>
+        <location filename="../installerprompt.cpp" line="275"/>
+        <source>Connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../installerprompt.cpp" line="251"/>
+        <location filename="../installerprompt.cpp" line="275"/>
         <source>Disconnected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.cpp" line="240"/>
+        <location filename="../installerprompt.cpp" line="255"/>
         <source>Ethernet %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.cpp" line="264"/>
+        <location filename="../installerprompt.cpp" line="279"/>
         <source>WiFi %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../installerprompt.cpp" line="285"/>
+        <location filename="../installerprompt.cpp" line="300"/>
         <source>WiFi password was incorrect.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../installerprompt.cpp" line="345"/>
+        <source>Something has gone very wrong trying to parse the list of supported languages!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -93,11 +99,11 @@
     <name>LanguageChangeDialog</name>
     <message>
         <location filename="../languagechangedialog.ui" line="14"/>
-        <source>Dialog</source>
+        <source>Kubuntu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../languagechangedialog.ui" line="20"/>
+        <location filename="../languagechangedialog.ui" line="23"/>
         <source>Changing language...</source>
         <translation type="unfinished"></translation>
     </message>
