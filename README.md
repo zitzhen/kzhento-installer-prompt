@@ -6,7 +6,7 @@ Art assets are copyrighted as follows:
 
 * img/arrow-down.svg: Copyright (C) 2014 Uri Herrera <uri_herrera@nitrux.in> and others. LGPL-3+ license. Taken from the Breeze icon theme.
 * img/background.png: Copyright (C) 2023 Andy Betts <anditosan@kde.org>. CC-BY-SA-4.0 license. Taken from Plasma Workspace Wallpapers, originally named "Mountain" (and given the ID of "Next").
-* img/kubuntu-logo.png, img/installer.png, img/emblem.png: Copyright (C) 2024 Kubuntu Developer <kubuntu-devel@lists.ubuntu.com>. Unknown license. Adapted from the official Kubuntu artwork.
+* img/kubuntu-logo.png, img/installer.png, img/emblem.png: Copyright (C) 2024 Kubuntu Developer <kubuntu-devel@lists.ubuntu.com>. GPL-3+ license. Adapted from the official Kubuntu artwork.
 
 All other files are licensed under the GNU General Public License version 3. Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>, Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>.
 
