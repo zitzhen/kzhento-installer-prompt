@@ -1,3 +1,9 @@
+kubuntu-installer-prompt (24.04.3) noble; urgency=medium
+
+  * Fix several bugs related to connecting to a network.
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Wed, 21 Feb 2024 12:53:17 -0600
+
 kubuntu-installer-prompt (24.04.2) noble; urgency=medium
 
   * Fix some incorrect references to Lubuntu and LXQt.
