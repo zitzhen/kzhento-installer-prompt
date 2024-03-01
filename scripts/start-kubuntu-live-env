@@ -9,5 +9,10 @@ export QT_STYLE_OVERRIDE="breeze"
 kwin_x11 &
 sudo -E kubuntu-installer-prompt # This is intentionally *not* backgrounded.
 # If it exits...
+
+# Work around an issue where Calamares makes .cache owned by root and causes
+# Plasma to crash.
+sudo chown -R 1000:1000 /home/kubuntu/.cache
+
 killall kwin_x11
 startplasma-x11

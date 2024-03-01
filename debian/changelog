@@ -1,3 +1,10 @@
+kubuntu-installer-prompt (24.04.5) noble; urgency=medium
+
+  * Ensure /home/kubuntu/.cache is owned by UID 1000 before attempting to
+    start Plasma. (LP: #2055726)
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Fri, 01 Mar 2024 13:07:33 -0600
+
 kubuntu-installer-prompt (24.04.4) noble; urgency=medium
 
   * Significant design improvements.
