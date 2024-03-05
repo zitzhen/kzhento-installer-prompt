@@ -2,6 +2,10 @@ kubuntu-installer-prompt (24.04.6) noble; urgency=medium
 
   * Get rid of d/source/options, it was causing the entire Git repo to get
     packaged into the source tarball.
+  * Don't launch the installer prompt with `sudo -E`, it causes `~/.cache` to
+    become owned by root.
+  * Remove the obsolete fix for #2055726 from last upload, not using `sudo -E`
+    to launch the prompt fixed the issue.
 
  -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Mon, 04 Mar 2024 21:19:07 -0600
 
