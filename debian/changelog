@@ -1,3 +1,10 @@
+kubuntu-installer-prompt (24.04.6) noble; urgency=medium
+
+  * Get rid of d/source/options, it was causing the entire Git repo to get
+    packaged into the source tarball.
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Mon, 04 Mar 2024 21:19:07 -0600
+
 kubuntu-installer-prompt (24.04.5) noble; urgency=medium
 
   * Ensure /home/kubuntu/.cache is owned by UID 1000 before attempting to
