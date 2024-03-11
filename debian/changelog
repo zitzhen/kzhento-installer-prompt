@@ -1,3 +1,11 @@
+kubuntu-installer-prompt (24.04.7) noble; urgency=medium
+
+  * Add open WiFi support. (LP: #2056603)
+  * Don't let the user close modal windows, so they don't confuse the
+    installer and mess up their system.
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Mon, 11 Mar 2024 18:26:43 -0500
+
 kubuntu-installer-prompt (24.04.6) noble; urgency=medium
 
   * Get rid of d/source/options, it was causing the entire Git repo to get
