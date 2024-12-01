@@ -1,9 +1,9 @@
-kubuntu-installer-prompt (25.04.1) UNRELEASED; urgency=medium
+kubuntu-installer-prompt (25.04.1) plucky; urgency=medium
 
   * Set keyboard layout when changing languages.
   * Port to Wayland.
 
- -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Sun, 01 Dec 2024 11:27:11 -0600
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Sun, 01 Dec 2024 17:47:01 -0600
 
 kubuntu-installer-prompt (24.10.1) oracular; urgency=medium
 
