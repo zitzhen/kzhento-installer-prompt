@@ -6,12 +6,13 @@ export XDG_SESSION_DESKTOP="KDE"
 export DESKTOP_SESSION="plasma"
 export QT_QPA_PLATFORMTHEME="kde"
 
-kwin_x11 &
+kwin_wayland &
+while [ ! -e "/run/user/$(id -u)/wayland-0" ]; do sleep 1; done
 if [[ $(cat /proc/cmdline) =~ "oem-config/enable=true" ]]; then
-    sudo -E /usr/bin/calamares-launch-oem;
+    WAYLAND_DISPLAY="wayland-0" sudo -E /usr/bin/calamares-launch-oem;
 else
-    kubuntu-installer-prompt;
+    WAYLAND_DISPLAY="wayland-0" kubuntu-installer-prompt;
 fi
 # If it exits...
-killall kwin_x11
-startplasma-x11
+killall kwin_wayland
+startplasma-wayland

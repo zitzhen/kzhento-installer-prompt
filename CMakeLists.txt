@@ -63,6 +63,6 @@ install(TARGETS kubuntu-installer-prompt
 )
 install(PROGRAMS "scripts/change-system-language" DESTINATION libexec)
 install(PROGRAMS "scripts/start-kubuntu-live-env" DESTINATION libexec)
-install(FILES "kubuntu-live-environment.desktop" DESTINATION share/xsessions)
+install(FILES "kubuntu-live-environment.desktop" DESTINATION share/wayland-sessions)
 
 qt_finalize_executable(kubuntu-installer-prompt)

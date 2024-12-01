@@ -64,7 +64,7 @@ InstallerPrompt::InstallerPrompt(QWidget *parent)
     QTimer *repeater = new QTimer();
     connect(repeater, SIGNAL(timeout()), this, SLOT(updateConnectionInfo()));
     repeater->start(15000);
-    
+
     updateConnectionInfo();
 }
 
@@ -137,24 +137,17 @@ void InstallerPrompt::onLanguageSelected(int index)
         only_plasma = true;
     }
 
-    // Some of the LibreOffice language packs need special-casing, do that here
-    QString libreOfficeLang;
-    if (localeParts[0] == "zh") {
-        libreOfficeLang = (countryCode == "CN" || countryCode == "SG" || countryCode == "MY") ? "zh-cn" : "zh-tw";
-    } else {
-        static const QMap<QString, QString> localeMap = {
-            {"en_GB", "en-gb"}, {"en_ZA", "en-za"}, {"pa_IN", "pa-in"}, {"pt_BR", "pt-br"}
-        };
-        libreOfficeLang = localeMap.value(localeParts.join('_'), languageCode);
-    }
-
     // Construct the command to run the script with parameters
     QProcess *process = new QProcess(this);
     QStringList arguments;
 
     process->setProgram("sudo");
-    arguments << "/usr/libexec/change-system-language" << languageCode << countryCode << libreOfficeLang;
-    if (only_plasma) arguments << "1";
+    arguments << "/usr/libexec/change-system-language" << languageCode << countryCode;
+    if (only_plasma) {
+        arguments << "n";
+    } else {
+        arguments << "y";
+    }
     process->setArguments(arguments);
 
     connect(process, &QProcess::errorOccurred, this, &InstallerPrompt::languageProcessError);
