@@ -130,6 +130,7 @@ main() {
             --delete
     fi
 
+    chown kubuntu:kubuntu ${kbd_config_file}
     systemctl restart sddm
 }
 
