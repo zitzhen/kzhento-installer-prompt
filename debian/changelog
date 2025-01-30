@@ -1,8 +1,8 @@
-kubuntu-installer-prompt (25.04.3) UNRELEASED; urgency=medium
+kubuntu-installer-prompt (25.04.3) plucky; urgency=medium
 
   * Make change-system-language use kwriteconfig6.
 
- -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Thu, 30 Jan 2025 15:50:32 -0600
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Thu, 30 Jan 2025 15:53:54 -0600
 
 kubuntu-installer-prompt (25.04.2) plucky; urgency=medium
 
