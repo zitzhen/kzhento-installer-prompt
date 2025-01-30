@@ -7,6 +7,7 @@ Build-Depends: cmake,
                debhelper-compat (= 13),
                extra-cmake-modules,
                kubuntu-settings-desktop (>= 1:24.04.5),
+               libkf6config-bin,
                libkf6networkmanagerqt-dev,
                qt6-base-dev,
                qt6-tools-dev

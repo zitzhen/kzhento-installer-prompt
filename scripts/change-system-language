@@ -103,13 +103,13 @@ main() {
     done
 
     if [ -n "${found_kbd_layout}" ]; then
-        kwriteconfig5 \
+        kwriteconfig6 \
             --file "${kbd_config_file}" \
             --group 'Layout' \
             --key 'LayoutList' \
             "${found_kbd_layout}"
     else
-        kwriteconfig5 \
+        kwriteconfig6 \
             --file "${kbd_config_file}" \
             --group 'Layout' \
             --key 'LayoutList' \
@@ -117,13 +117,13 @@ main() {
     fi
 
     if [ -n "${found_kbd_variant}" ]; then
-        kwriteconfig5 \
+        kwriteconfig6 \
             --file "${kbd_config_file}" \
             --group 'Layout' \
             --key 'VariantList' \
             "${found_kbd_variant}"
     else
-        kwriteconfig5 \
+        kwriteconfig6 \
             --file "${kbd_config_file}" \
             --group 'Layout' \
             --key 'VariantList' \
