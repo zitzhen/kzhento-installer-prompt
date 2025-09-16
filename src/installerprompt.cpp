@@ -111,7 +111,7 @@ void InstallerPrompt::onInstallClicked()
     ui->languageComboBox->setEnabled(false);
     QProcess *calamares = new QProcess(this);
     calamares->setProgram("/usr/bin/sudo");
-    calamares->setArguments(QStringList() << "-E" << "calamares" << "-D8");
+    calamares->setArguments(QStringList() << "WAYLAND_DISPLAY=wayland-0" << "XDG_RUNTIME_DIR=/run/user/1000" << "QT_QPA_PLATFORMTHEME=kde" << "calamares" << "-D8");
     calamares->start();
 
     // If Calamares exits, it either crashed or the user cancelled the installation. Exit the installer prompt (and start Plasma).

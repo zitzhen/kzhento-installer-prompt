@@ -1,3 +1,10 @@
+kubuntu-installer-prompt (25.10.1) questing; urgency=medium
+
+  * Set Calamares environment variables explicitly since sudo no longer
+    provides the -E option. (LP: #2124199)
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Tue, 16 Sep 2025 11:06:15 -0500
+
 kubuntu-installer-prompt (25.04.4) plucky; urgency=medium
 
   * Start kwin_wayland with '--no-lockscreen' to prevent the lockscreen
