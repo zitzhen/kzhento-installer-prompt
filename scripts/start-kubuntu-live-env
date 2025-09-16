@@ -6,7 +6,7 @@ export XDG_SESSION_DESKTOP="KDE"
 export DESKTOP_SESSION="plasma"
 export QT_QPA_PLATFORMTHEME="kde"
 
-kwin_wayland &
+kwin_wayland --no-lockscreen &
 while [ ! -e "/run/user/$(id -u)/wayland-0" ]; do sleep 1; done
 if [[ $(cat /proc/cmdline) =~ "oem-config/enable=true" ]]; then
     WAYLAND_DISPLAY="wayland-0" sudo -E /usr/bin/calamares-launch-oem;

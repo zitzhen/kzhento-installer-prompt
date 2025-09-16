@@ -1,3 +1,11 @@
+kubuntu-installer-prompt (25.04.4) plucky; urgency=medium
+
+  * Start kwin_wayland with '--no-lockscreen' to prevent the lockscreen
+    activating in the direct non 'Try Kubuntu Desktop' install case.
+    LP: (#2105440)
+
+ -- Rik Mills <rikmills@kde.org>  Fri, 04 Apr 2025 07:57:57 +0100
+
 kubuntu-installer-prompt (25.04.3) plucky; urgency=medium
 
   * Make change-system-language use kwriteconfig6.
