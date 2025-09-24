@@ -1,3 +1,10 @@
+kubuntu-installer-prompt (25.10.2) questing; urgency=medium
+
+  * Fix keyboard layout issues when launching Calamares with the "Install
+    Kubuntu" button. (LP: #2124209)
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Wed, 24 Sep 2025 16:17:14 -0500
+
 kubuntu-installer-prompt (25.10.1) questing; urgency=medium
 
   * Set Calamares environment variables explicitly since sudo no longer

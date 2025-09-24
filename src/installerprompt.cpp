@@ -99,6 +99,11 @@ void InstallerPrompt::activateBackground()
 
 void InstallerPrompt::onTryClicked()
 {
+    QProcess proc;
+    proc.setProgram("/usr/bin/killall");
+    proc.setArguments(QStringList() << "kwin_wayland");
+    proc.start();
+    proc.waitForFinished();
     QApplication::quit();
 }
 
@@ -110,8 +115,12 @@ void InstallerPrompt::onInstallClicked()
     ui->installKubuntu->setToolTip("");
     ui->languageComboBox->setEnabled(false);
     QProcess *calamares = new QProcess(this);
+    calamares->setProgram("/usr/bin/xhost");
+    calamares->setArguments(QStringList() << "si:localuser:root");
+    calamares->start();
+    calamares->waitForFinished();
     calamares->setProgram("/usr/bin/sudo");
-    calamares->setArguments(QStringList() << "WAYLAND_DISPLAY=wayland-0" << "XDG_RUNTIME_DIR=/run/user/1000" << "QT_QPA_PLATFORMTHEME=kde" << "calamares" << "-D8");
+    calamares->setArguments(QStringList() << "QT_QPA_PLATFORMTHEME=kde" << "calamares" << "-D8");
     calamares->start();
 
     // If Calamares exits, it either crashed or the user cancelled the installation. Exit the installer prompt (and start Plasma).
