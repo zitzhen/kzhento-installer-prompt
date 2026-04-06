@@ -1,3 +1,9 @@
+kubuntu-installer-prompt (26.04.1) resolute; urgency=medium
+
+  * Update background image and theming for 26.04.
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Fri, 03 Apr 2026 09:44:08 -0500
+
 kubuntu-installer-prompt (25.10.2) questing; urgency=medium
 
   * Fix keyboard layout issues when launching Calamares with the "Install
