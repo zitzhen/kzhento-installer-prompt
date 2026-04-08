@@ -1,8 +1,8 @@
 kubuntu-installer-prompt (26.04.1) resolute; urgency=medium
 
-  * Update background image and theming for 26.04.
+  * Update background image and theming for 26.04. (LP: #2147510)
 
- -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Fri, 03 Apr 2026 09:44:08 -0500
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Wed, 08 Apr 2026 13:42:23 -0400
 
 kubuntu-installer-prompt (25.10.2) questing; urgency=medium
 
