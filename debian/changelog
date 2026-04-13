@@ -1,3 +1,9 @@
+kubuntu-installer-prompt (26.04.2) resolute; urgency=medium
+
+  * Fix border color on drop-down menus.
+
+ -- Aaron Rainbolt <arraybolt3@ubuntu.com>  Mon, 13 Apr 2026 11:47:47 -0400
+
 kubuntu-installer-prompt (26.04.1) resolute; urgency=medium
 
   * Update background image and theming for 26.04. (LP: #2147510)
