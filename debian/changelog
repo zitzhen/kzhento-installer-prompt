@@ -1,3 +1,10 @@
+kubuntu-installer-prompt (26.04.3) UNRELEASED; urgency=medium
+
+  * Restart xdg-desktop-portal.service when Try Kubuntu is clicked
+    (LP: #2164684)
+
+ -- Aaron Rainbolt <arainbolt@kfocus.org>  Thu, 20 Aug 2026 17:07:31 -0500
+
 kubuntu-installer-prompt (26.04.2) resolute; urgency=medium
 
   * Fix border color on drop-down menus.
