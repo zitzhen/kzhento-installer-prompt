@@ -47,22 +47,32 @@ qt_add_resources(QM_RESOURCES ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc)
 
 add_custom_target(translations ALL DEPENDS ${QM_FILES})
 
-add_executable(kubuntu-installer-prompt
+add_executable(kzhento-installer-prompt
     ${PROJECT_SOURCES}
     ${QM_RESOURCES}
 )
 
-add_dependencies(kubuntu-installer-prompt translations)
+add_dependencies(kzhento-installer-prompt translations)
 
-target_link_libraries(kubuntu-installer-prompt PRIVATE Qt6::Widgets Qt6::Network KF6::NetworkManagerQt)
+target_link_libraries(kzhento-installer-prompt PRIVATE Qt6::Widgets Qt6::Network KF6::NetworkManagerQt)
 
-install(TARGETS kubuntu-installer-prompt
+install(TARGETS kzhento-installer-prompt
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+# Keep the historical command name as a compatibility symlink so existing
+# ISO integration that execs "kubuntu-installer-prompt" keeps working.
+# Use a literal "bin" here: CMAKE_INSTALL_BINDIR is not set in install(CODE)
+# when a packaging build overrides the install prefix, which would otherwise
+# place the link at $prefix/ instead of $prefix/bin/.
+install(CODE [[
+  set(_bindir "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin")
+  file(REMOVE "${_bindir}/kubuntu-installer-prompt")
+  file(CREATE_LINK "kzhento-installer-prompt" "${_bindir}/kubuntu-installer-prompt" SYMBOLIC)
+]])
 install(PROGRAMS "scripts/change-system-language" DESTINATION libexec)
 install(PROGRAMS "scripts/start-kubuntu-live-env" DESTINATION libexec)
 install(FILES "kubuntu-live-environment.desktop" DESTINATION share/wayland-sessions)
 
-qt_finalize_executable(kubuntu-installer-prompt)
+qt_finalize_executable(kzhento-installer-prompt)

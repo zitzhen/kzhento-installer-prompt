@@ -53,7 +53,7 @@ apt-cache show kzhento-installer-prompt
 **EN:** Smoke test without a display:
 
 ```sh
-timeout 5 env QT_QPA_PLATFORM=offscreen /usr/bin/kubuntu-installer-prompt; echo "exit=$?"
+timeout 5 env QT_QPA_PLATFORM=offscreen /usr/bin/kzhento-installer-prompt; echo "exit=$?"
 ```
 
 `exit=124`（超时）说明进程正常存活；段错误或 Qt 插件报错才是问题。
@@ -74,7 +74,7 @@ export DISPLAY=:99
 Xvfb :99 -screen 0 1280x800x24 -nolisten tcp &
 XPID=$!
 sleep 1
-env LANG=C.UTF-8 DISPLAY=:99 /usr/bin/kubuntu-installer-prompt &
+env LANG=C.UTF-8 DISPLAY=:99 /usr/bin/kzhento-installer-prompt &
 GPID=$!
 sleep 6
 kill -0 "$GPID" 2>/dev/null && echo ALIVE || echo EXITED
@@ -94,7 +94,7 @@ kill "$GPID" "$XPID" 2>/dev/null || true
 
 ```sh
 cd /tmp/kzhento-test
-timeout 8 env QT_QPA_PLATFORM=offscreen ./usr/bin/kubuntu-installer-prompt; echo "exit=$?"
+timeout 8 env QT_QPA_PLATFORM=offscreen ./usr/bin/kzhento-installer-prompt; echo "exit=$?"
 ```
 
 若要以真实界面看效果，用 X11/Wayland 平台（`QT_QPA_PLATFORM=xcb` 或默认 Wayland），但**注意**：
