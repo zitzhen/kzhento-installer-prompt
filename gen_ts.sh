@@ -8,4 +8,13 @@ for i in ${langList[@]}; do
         echo "<TS version=\"2.1\" language=\"$i\"></TS>" >> $targetFile
     fi
 done
-lupdate -no-obsolete src/*.cpp src/*.h src/*.ui -ts src/translations/*
+# qtchooser's "lupdate" may default to Qt5 on systems without it installed;
+# prefer the Qt6 binary when available since this project targets Qt6.
+if command -v lupdate-qt6 >/dev/null 2>&1; then
+    LUPDATE=lupdate-qt6
+elif [ -x /usr/lib/qt6/bin/lupdate ]; then
+    LUPDATE=/usr/lib/qt6/bin/lupdate
+else
+    LUPDATE=lupdate
+fi
+"$LUPDATE" -no-obsolete src/*.cpp src/*.h src/*.ui -ts src/translations/*

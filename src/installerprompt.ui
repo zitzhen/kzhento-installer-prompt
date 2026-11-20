@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Try or Install Kubuntu</string>
+   <string>Try or Install Kzhento</string>
   </property>
   <property name="styleSheet">
    <string notr="true">/*
@@ -500,13 +500,13 @@ QToolTip {
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="toolTip">
-         <string>&lt;p&gt;&lt;span style=&quot;font-size:18px; color: rgb(252, 252, 252); margin-bottom: 0;&quot;&gt;Run live environment&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16px;&quot;&gt;Run Kubuntu from the installation media without changing a system disk. Changes made to this environment will not be saved when the computer is shut down.&lt;/span&gt;&lt;/p&gt;</string>
+         <string>&lt;p&gt;&lt;span style=&quot;font-size:18px; color: rgb(252, 252, 252); margin-bottom: 0;&quot;&gt;Run live environment&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16px;&quot;&gt;Run Kzhento from the installation media without changing a system disk. Changes made to this environment will not be saved when the computer is shut down.&lt;/span&gt;&lt;/p&gt;</string>
         </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>  Try Kubuntu</string>
+         <string>  Try Kzhento</string>
         </property>
         <property name="icon">
          <iconset resource="resource.qrc">
@@ -558,13 +558,13 @@ QToolTip {
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="toolTip">
-         <string>&lt;p&gt;&lt;span style=&quot;font-size:18px; color: rgb(252, 252, 252); margin-bottom: 0;&quot;&gt;Install to this system&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;Install Kubuntu to a system disk by itself, or alongside an existing operating system.&lt;/span&gt;&lt;/p&gt;</string>
+         <string>&lt;p&gt;&lt;span style=&quot;font-size:18px; color: rgb(252, 252, 252); margin-bottom: 0;&quot;&gt;Install to this system&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size:16px;&quot;&gt;Install Kzhento to a system disk by itself, or alongside an existing operating system.&lt;/span&gt;&lt;/p&gt;</string>
         </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>  Install Kubuntu</string>
+         <string>  Install Kzhento</string>
         </property>
         <property name="icon">
          <iconset resource="resource.qrc">

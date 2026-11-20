@@ -1,34 +1,32 @@
-# Kubuntu Installer Prompt
+# Kzhento Installer Prompt
 
-This project is in beta. It presents a "Try or Install Kubuntu" screen. Eventually we want to extend this to support multiple flavors.
+This project is in beta. It presents a "Try or Install Kzhento" screen. It is the Kzhento-specific derivative of the Kubuntu live installer prompt.
 
 Art assets are copyrighted as follows:
 
 * img/arrow-down.svg, img/dialog-warning.svg: Copyright (C) 2014 Uri Herrera <uri_herrera@nitrux.in> and others. LGPL-3+ license. Taken from the Breeze icon theme.
 * img/usb-drive.svg, img/hdd-drive.svg: Copyright (C) 2014 Uri Herrera <uri_herrera@nitrux.in> and others, Copyright (C) 2024 Kubuntu Contributors. LGPL-3+ license. Adapted from the Breeze icon theme.
 * img/background.png: Copyright (C) 2024 Fábio Maricato, Copyright (C) 2024 Michael Mikowski <mmikowski@kfocus.org>. CC0-1.0 Universal license. Designed for Kubuntu.
-* img/kubuntu-logo.png: Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>. GPL-3+ license. Adapted from the official Kubuntu artwork.
+* img/kzhento-logo.png: The KzhenTo Logo. Copyright (C) 2026 ZIT Studio. All rights reserved. Adapted from artwork published at https://github.com/zitzhen/kzhento-icon. This artwork is excluded from the GPL-3.0 license below and is not covered by any permission to use, copy, modify, or redistribute it.
 
-All other files are licensed under the GNU General Public License version 3. Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>, Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>.
+All other files (excluding img/kzhento-logo.png) are licensed under the GNU General Public License version 3. Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>, Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>.
 
 Derivative changes Copyright (C) 2026 ZIT Studio. This is a derivative of kubuntu-installer-prompt, originally from https://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt. The GNU GPL version 3 license text is preserved unchanged in LICENSE.
 
 ## Architecture
 
-This section serves to explain how kubuntu-installer-prompt's various components work together to provide the Kubuntu ISO boot experience.
+This section explains how the Kzhento ISO's live prompt fits together.
 
 1. SDDM loads.
-2. /etc/sddm.conf is read. This file has been generated (or modified?) by Casper to point to a kubuntu-live-environment.desktop X session.
-3. kubuntu-live-environment.desktop executes /bin/start-kubuntu-live-env.
-4. start-kubuntu-live-env starts kwin\_x11 and backgrounds it.
-5. start-kubuntu-live-env starts /bin/kubuntu-installer-prompt but does not background it.
-6. The installer prompt appears.
-7. The user clicks "Install Kubuntu" or "Try Kubuntu".
-8. If "Install Kubuntu" is clicked, the installer prompt executes `sudo -E calamares -D8`. The installer prompt then removes the buttons from the screen.
-9. The installer window appears on the user's screen.
-10. If Calamares closes, the installer prompt detects this and exits.
-11. When the installer prompt exits, start-kubuntu-live-env kills kwin\_x11 and runs startplasma-x11.
-12. If "Try Kubuntu" is clicked, steps 10 and 11 are executed immediately.
+2. Casper points `/etc/sddm.conf` at the `kubuntu-live-environment.desktop` session (the filename is kept for compatibility with the base ISO).
+3. The session runs `/usr/libexec/start-kubuntu-live-env`.
+4. The script starts `kwin_wayland --xwayland --no-lockscreen` with `kubuntu-installer-prompt` as its client. If `oem-config/enable=true` is in the kernel command line, `calamares-launch-oem` is started instead and the prompt is skipped.
+5. The installer prompt appears.
+6. The user clicks "Install Kzhento" or "Try Kzhento".
+7. On "Install Kzhento", the prompt runs `xhost si:localuser:root` followed by `sudo QT_QPA_PLATFORMTHEME=kde calamares -D8`, then hides its buttons.
+8. When Calamares closes, the prompt detects this and exits.
+9. The script drops a one-shot autostart entry to restart the XDG desktop portals, then runs `startplasma-wayland`.
+10. On "Try Kzhento", steps 8 and 9 are executed immediately.
 
 ## Translations
 
