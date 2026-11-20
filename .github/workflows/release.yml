@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (leave empty to use the current ref)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  # 仅打 v* tag 或手动触发；发行的包为草稿，需人工审核后发布
+  release:
+    name: Package and draft release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 构建 deb / Build deb
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/.ci-out"
+          docker run --rm -i \
+            -v "$GITHUB_WORKSPACE:/src:ro" \
+            -v "$GITHUB_WORKSPACE/.ci-out:/out" \
+            ubuntu:26.04 bash -s <<'SCRIPT'
+          set -euo pipefail
+          bash /src/.github/scripts/setup-build-env.sh
+
+          cp -a /src /tmp/build
+          cd /tmp/build
+          dpkg-buildpackage -b -us -uc
+          cp /tmp/*.deb /out/
+          ls -lh /out/
+          SCRIPT
+
+      - name: 生成校验和 / Generate checksums
+        run: cd .ci-out && sha256sum *.deb > SHA256SUMS
+
+      - name: 创建草稿发行 / Create draft release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag || github.ref_name }}
+          draft: true
+          generate_release_notes: true
+          files: |
+            .ci-out/*.deb
+            .ci-out/SHA256SUMS
+          body: |
+            > **Draft release** — review before publishing.
+
+            KzhenTo Installer Prompt binary package for Ubuntu 26.04 (amd64).
+            See `TESTING.md` in the repository for safe testing instructions.
+            Do **not** install this on a daily-driver host.
