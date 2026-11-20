@@ -1,6 +1,5 @@
 Source: kzhento-installer-prompt
-Maintainer: Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
-Uploaders: Aaron Rainbolt <arraybolt3@gmail.com>
+Maintainer: Oliver Lin <oliver@liuxiaozhen.dev>
 Section: misc
 Priority: optional
 Build-Depends: cmake,
@@ -12,9 +11,9 @@ Build-Depends: cmake,
                qt6-base-dev,
                qt6-tools-dev
 Standards-Version: 4.6.2
-Vcs-Browser: https://code.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt
-Vcs-Git: git://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt
-Homepage: https://kubuntu.org
+Vcs-Browser: https://github.com/zitzhen/kzhento-installer-prompt
+Vcs-Git: https://github.com/zitzhen/kzhento-installer-prompt.git
+Homepage: https://github.com/zitzhen/kzhento-installer-prompt
 Rules-Requires-Root: no
 
 Package: kzhento-installer-prompt
