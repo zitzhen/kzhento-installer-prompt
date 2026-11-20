@@ -23,9 +23,12 @@ Copyright: 2024 Fábio Maricato <maricatooo@gmail.com>
            2024 Michael Mikowski <mmikowski@kfocus.org>
 License: CC0
 
-Files: img/kubuntu-logo.png
-Copyright: 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
+Files: img/kzhento-logo.png
+Copyright: 2026 Oliver Lin (Iamliuxiaozhen)
+           2026 ZIT Studio (dark-background adaptation)
 License: GPL-3+
+Comment: Artwork from https://github.com/zitzhen/kzhento-icon; that
+ repository has no explicit license file yet.
 
 License: GPL-3.0
  This program is free software: you can redistribute it and/or modify

@@ -21,8 +21,8 @@ Package: kubuntu-installer-prompt
 Architecture: any
 Depends: calamares-settings-kubuntu, ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
-Description: Live ISO prompt for trying or installing Kubuntu
+Description: Live ISO prompt for trying or installing Kzhento
  This application displays a screen allowing the user to either try or
- install Kubuntu after booting the Kubuntu ISO file. It auto-launches
+ install Kzhento after booting the Kzhento ISO file. It auto-launches
  when the ISO is first booted, and will either launch Calamares or Plasma,
  depending on the user's choice.
