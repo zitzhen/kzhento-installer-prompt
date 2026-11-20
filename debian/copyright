@@ -4,7 +4,10 @@ Source: https://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubu
 Files: *
 Copyright: 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
            2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
+           2026 ZIT Studio
 License: GPL-3.0
+Comment: Derivative work of kubuntu-installer-prompt; original source at
+ https://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt
 
 Files: img/arrow-down.svg
        img/dialog-warning.svg

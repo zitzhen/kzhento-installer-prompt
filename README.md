@@ -11,6 +11,8 @@ Art assets are copyrighted as follows:
 
 All other files are licensed under the GNU General Public License version 3. Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>, Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>.
 
+Derivative changes Copyright (C) 2026 ZIT Studio. This is a derivative of kubuntu-installer-prompt, originally from https://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt. The GNU GPL version 3 license text is preserved unchanged in LICENSE.
+
 ## Architecture
 
 This section serves to explain how kubuntu-installer-prompt's various components work together to provide the Kubuntu ISO boot experience.

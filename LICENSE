@@ -1,3 +1,30 @@
+ZIT Studio derivative work notice (not part of the GNU General Public License text below)
+
+kubuntu-installer-prompt (ZIT Studio derivative)
+Copyright (C) 2026 ZIT Studio
+Based on kubuntu-installer-prompt, originally from:
+  https://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt
+Original work Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
+Original work Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Contact: https://github.com/zitzhen/kzhento-installer-prompt
+(This is a GUI application and does not use terminal-interactive notices.)
+
+The unmodified GNU General Public License version 3 text follows.
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
