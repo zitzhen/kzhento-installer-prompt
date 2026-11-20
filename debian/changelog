@@ -1,3 +1,11 @@
+kzhento-installer-prompt (1.0.2) unstable; urgency=medium
+
+  * Declare Replaces/Breaks against kubuntu-installer-prompt so the
+    renamed package can take over /usr/bin/kubuntu-installer-prompt
+    without a dpkg file-conflict error (Closes: #6).
+
+ -- Oliver Lin <oliver@liuxiaozhen.dev>  Fri, 20 Nov 2026 20:46:11 +0800
+
 kzhento-installer-prompt (1.0.1) unstable; urgency=medium
 
   * Rebrand the live-session prompt for KzhenTo: new logo and
