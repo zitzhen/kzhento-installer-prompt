@@ -7,6 +7,12 @@ Based on kubuntu-installer-prompt, originally from:
 Original work Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
 Original work Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
 
+Excluded artwork: img/kzhento-logo.png (the KzhenTo Logo) is Copyright
+(C) 2026 ZIT Studio. All rights reserved. It is not covered by the GNU
+General Public License grant below or by any other license in this
+project; permission to use, copy, modify, or distribute it must be
+obtained in writing from ZIT Studio.
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or

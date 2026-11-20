@@ -7,9 +7,9 @@ Art assets are copyrighted as follows:
 * img/arrow-down.svg, img/dialog-warning.svg: Copyright (C) 2014 Uri Herrera <uri_herrera@nitrux.in> and others. LGPL-3+ license. Taken from the Breeze icon theme.
 * img/usb-drive.svg, img/hdd-drive.svg: Copyright (C) 2014 Uri Herrera <uri_herrera@nitrux.in> and others, Copyright (C) 2024 Kubuntu Contributors. LGPL-3+ license. Adapted from the Breeze icon theme.
 * img/background.png: Copyright (C) 2024 Fábio Maricato, Copyright (C) 2024 Michael Mikowski <mmikowski@kfocus.org>. CC0-1.0 Universal license. Designed for Kubuntu.
-* img/kzhento-logo.png: Kzhento wordmark by Oliver Lin (Iamliuxiaozhen), from https://github.com/zitzhen/kzhento-icon. Recolored and cropped for the dark live-session background by ZIT Studio. The source repository currently has no explicit license file; add one before redistributing the artwork publicly.
+* img/kzhento-logo.png: The KzhenTo Logo. Copyright (C) 2026 ZIT Studio. All rights reserved. Adapted from artwork published at https://github.com/zitzhen/kzhento-icon. This artwork is excluded from the GPL-3.0 license below and is not covered by any permission to use, copy, modify, or redistribute it.
 
-All other files are licensed under the GNU General Public License version 3. Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>, Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>.
+All other files (excluding img/kzhento-logo.png) are licensed under the GNU General Public License version 3. Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>, Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>.
 
 Derivative changes Copyright (C) 2026 ZIT Studio. This is a derivative of kubuntu-installer-prompt, originally from https://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt. The GNU GPL version 3 license text is preserved unchanged in LICENSE.
 
