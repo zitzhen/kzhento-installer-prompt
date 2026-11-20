@@ -1,3 +1,3 @@
-kzhento-installer-prompt: no-manual-page [usr/bin/kubuntu-installer-prompt]
+kzhento-installer-prompt: no-manual-page [usr/bin/kzhento-installer-prompt]
 kzhento-installer-prompt: desktop-entry-lacks-icon-entry [usr/share/xsessions/kubuntu-live-environment.desktop]
 kzhento-installer-prompt: desktop-entry-lacks-keywords-entry [usr/share/xsessions/kubuntu-live-environment.desktop]

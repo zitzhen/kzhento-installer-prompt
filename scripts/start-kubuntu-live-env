@@ -9,7 +9,7 @@ export QT_QPA_PLATFORMTHEME="kde"
 if [[ $(cat /proc/cmdline) =~ "oem-config/enable=true" ]]; then
     kwin_wayland --xwayland --no-lockscreen /usr/bin/calamares-launch-oem;
 else
-    kwin_wayland --xwayland --no-lockscreen kubuntu-installer-prompt;
+    kwin_wayland --xwayland --no-lockscreen kzhento-installer-prompt;
 fi
 # If it exits...
 
