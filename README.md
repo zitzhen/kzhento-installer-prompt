@@ -1,55 +1,73 @@
-# Kzhento Installer Prompt
+# KzhenTo Installer Prompt
 
-This project is in beta. It presents a "Try or Install Kzhento" screen. It is the Kzhento-specific derivative of the Kubuntu live installer prompt.
+`kzhento-installer-prompt` is the welcome screen shown when a KzhenTo live ISO boots. It lets the user pick a language and a network connection, then offers **Try KzhenTo** (boot straight into the live desktop) or **Install KzhenTo** (hand off to the Calamares installer).
 
-Art assets are copyrighted as follows:
+This is a KzhenTo-specific derivative of Kubuntu's `kubuntu-installer-prompt`, maintained by ZIT Studio. The project is in beta.
 
-* img/arrow-down.svg, img/dialog-warning.svg: Copyright (C) 2014 Uri Herrera <uri_herrera@nitrux.in> and others. LGPL-3+ license. Taken from the Breeze icon theme.
-* img/usb-drive.svg, img/hdd-drive.svg: Copyright (C) 2014 Uri Herrera <uri_herrera@nitrux.in> and others, Copyright (C) 2024 Kubuntu Contributors. LGPL-3+ license. Adapted from the Breeze icon theme.
-* img/background.png: Copyright (C) 2024 Fábio Maricato, Copyright (C) 2024 Michael Mikowski <mmikowski@kfocus.org>. CC0-1.0 Universal license. Designed for Kubuntu.
-* img/kzhento-logo.png: The KzhenTo Logo. Copyright (C) 2026 ZIT Studio. All rights reserved. Adapted from artwork published at https://github.com/zitzhen/kzhento-icon. This artwork is excluded from the GPL-3.0 license below and is not covered by any permission to use, copy, modify, or redistribute it.
+## Features
 
-All other files (excluding img/kzhento-logo.png) are licensed under the GNU General Public License version 3. Copyright (C) 2022 Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>, Copyright (C) 2024 Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>.
+- **Language selection** built from `/usr/share/i18n/SUPPORTED` and `QLocale`. When offline, only a small set of locales (zh-Hans, hi, es, fr, ar, en) can install full language packages; other choices only change the Plasma language.
+- **Network setup** through NetworkManagerQt over D-Bus: Ethernet and Wi-Fi device selection, a password dialog, and cleanup of connections that fail to authenticate. The device list refreshes every 15 seconds.
+- **OEM mode**: if `oem-config/enable=true` is in the kernel command line, the prompt is skipped and `calamares-launch-oem` is started instead.
+- **Multi-monitor support**: secondary screens show a plain background window while the prompt runs on the primary screen.
 
-Derivative changes Copyright (C) 2026 ZIT Studio. This is a derivative of kubuntu-installer-prompt, originally from https://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt. The GNU GPL version 3 license text is preserved unchanged in LICENSE.
+## Boot flow (Wayland)
 
-## Architecture
+1. SDDM loads, and Casper points `/etc/sddm.conf` at the `kubuntu-live-environment.desktop` session. The filename is retained for compatibility with the base ISO.
+2. The session runs `/usr/libexec/start-kubuntu-live-env`.
+3. The script starts `kwin_wayland --xwayland --no-lockscreen` with `kubuntu-installer-prompt` as its client (or `calamares-launch-oem` in OEM mode).
+4. The prompt appears and the user chooses **Try KzhenTo** or **Install KzhenTo**.
+5. **Install KzhenTo** runs `xhost si:localuser:root` followed by `sudo QT_QPA_PLATFORMTHEME=kde calamares -D8`, then hides the buttons. When Calamares closes, the prompt exits.
+6. **Try KzhenTo** makes the prompt exit immediately.
+7. After the prompt exits, the script installs a one-shot autostart entry to restart the XDG desktop portals and launches `startplasma-wayland`.
 
-This section explains how the Kzhento ISO's live prompt fits together.
+## Building
 
-1. SDDM loads.
-2. Casper points `/etc/sddm.conf` at the `kubuntu-live-environment.desktop` session (the filename is kept for compatibility with the base ISO).
-3. The session runs `/usr/libexec/start-kubuntu-live-env`.
-4. The script starts `kwin_wayland --xwayland --no-lockscreen` with `kubuntu-installer-prompt` as its client. If `oem-config/enable=true` is in the kernel command line, `calamares-launch-oem` is started instead and the prompt is skipped.
-5. The installer prompt appears.
-6. The user clicks "Install Kzhento" or "Try Kzhento".
-7. On "Install Kzhento", the prompt runs `xhost si:localuser:root` followed by `sudo QT_QPA_PLATFORMTHEME=kde calamares -D8`, then hides its buttons.
-8. When Calamares closes, the prompt detects this and exits.
-9. The script drops a one-shot autostart entry to restart the XDG desktop portals, then runs `startplasma-wayland`.
-10. On "Try Kzhento", steps 8 and 9 are executed immediately.
+Requirements:
+
+- CMake 3.16 or newer and a C++23 compiler
+- Extra CMake Modules (ECM), Qt 6 (Core, Widgets, Network, LinguistTools), and KF6 NetworkManagerQt
+- Debian build dependencies are listed in `debian/control`
+
+```sh
+cmake -S . -B build
+cmake --build build
+cmake --install build
+```
+
+The install prefix is `/usr`. The build installs the `kubuntu-installer-prompt` binary, the `change-system-language` and `start-kubuntu-live-env` helpers under `libexec`, and the live-session desktop entry under `share/wayland-sessions`.
 
 ## Translations
 
-Run the `gen_ts.sh` script after making any code modifications to ensure that the translations files are up-to-date for translators to work on.
+Translation templates live in `src/translations/` and currently contain no finished translations. After changing any UI string, regenerate them with:
 
-To add a new language to be translated:
+```sh
+./gen_ts.sh
+```
 
-* Open the `gen_ts.sh` script and add the locale code for the new language to the `langList` array.
-* Run the script after doing this - a new template .ts file will be generated under `src/translations/`.
-* Next, add the new template file to the `TS_FILES` list in `CMakeLists.txt` - it will be named `src/translations/kubuntu-installer-prompt-locale_CODE.ts`, where `locale_CODE` is the locale code of the added language.
-* Finally, add a line in the src/translations.qrc resource file to include the new translation file. The line should look like `<file alias="locale_CODE">kubuntu-installer-prompt_locale_CODE.qm</file>`, where `locale_CODE` is the locale code of the added language. This line should go inside the `<qresource>` tag.
+The script prefers a Qt 6 `lupdate` binary (`lupdate-qt6` or `/usr/lib/qt6/bin/lupdate`) and falls back to `lupdate`. At build time CMake compiles the `.ts` files into `.qm` resources via `qt_add_translation`.
 
-For instance, if I were to add Chinese to the list of languages that could be translated into, I would do this:
+To add a language:
 
-    vim gen_ts.sh
-    # add this code to the langList array:
-    #    'zh_CN'
-    ./gen_ts.sh
-    vim CMakeLists.txt
-    # add this line to the TS_FILES list:
-    #    src/translations/kubuntu-installer-prompt_zh_CN.ts
-    vim src/translations.qrc
-    # add this line to the list of file resources:
-    #    <file alias="zh_CN">kubuntu-installer-prompt_zh_CN.qm</file>
+1. Add its locale code to `langList` in `gen_ts.sh` and run the script.
+2. Re-run CMake so the `file(GLOB ...)` in `CMakeLists.txt` picks up the new `.ts` file.
+3. Add a matching `<file alias="LOCALE">kubuntu-installer-prompt_LOCALE.qm</file>` line inside the `<qresource>` tag in `src/translations.qrc`.
 
-The program will now pick up the added language at build time. Any translations added to the newly created .ts file will be shown to program users who select the new language.
+Translators can then fill in the new template; the compiled translation is picked up at runtime according to the system locale.
+
+## Naming kept from upstream
+
+The following names are intentionally unchanged from the Kubuntu original so the ISO integration and packaging keep working: the executable `kubuntu-installer-prompt`, the Debian package name, `scripts/start-kubuntu-live-env`, `scripts/change-system-language`, `kubuntu-live-environment.desktop`, and the translation file names. Only the CMake project name was changed, to `kzhento-installer-prompt`.
+
+## Artwork and licensing
+
+- `img/kzhento-logo.png` — **The KzhenTo Logo. Copyright (C) 2026 ZIT Studio. All rights reserved.** Adapted from artwork published at <https://github.com/zitzhen/kzhento-icon>. This artwork is **excluded** from the GPL-3.0 license covering the rest of this project; no permission to use, copy, modify, or distribute it is granted here. Contact ZIT Studio for permission.
+- `img/background.png` — Copyright (C) 2024 Fábio Maricato and Michael Mikowski. CC0-1.0 Universal. Designed for Kubuntu.
+- `img/arrow-down.svg`, `img/dialog-warning.svg` — Copyright (C) 2014 Uri Herrera and others. LGPL-3.0-or-later. From the Breeze icon theme.
+- `img/usb-drive.svg`, `img/hdd-drive.svg` — Copyright (C) 2014 Uri Herrera and others, Copyright (C) 2024 Kubuntu Contributors. LGPL-3.0-or-later. Adapted from the Breeze icon theme.
+
+All other files are licensed under GPL-3.0-or-later. Original copyright: 2022 Lubuntu Developers and 2024 Kubuntu Developers; derivative changes copyright 2026 ZIT Studio. The unmodified GPL-3.0 text, together with the ZIT Studio derivative notice, is in `LICENSE`.
+
+## Origin
+
+Derivative of `kubuntu-installer-prompt`, originally from <https://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubuntu-installer-prompt>.
