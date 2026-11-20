@@ -37,6 +37,10 @@ cmake --install build
 
 The install prefix is `/usr`. The build installs the `kubuntu-installer-prompt` binary, the `change-system-language` and `start-kubuntu-live-env` helpers under `libexec`, and the live-session desktop entry under `share/wayland-sessions`.
 
+## Testing
+
+Do not install the built deb on your daily-driver host. See `TESTING.md` (bilingual, Chinese and English) for a step-by-step guide that starts with zero-risk static checks, runs the package inside a container, renders the GUI on a virtual display, and only then moves on to a VM or Live ISO.
+
 ## Translations
 
 Translation templates live in `src/translations/` and currently contain no finished translations. After changing any UI string, regenerate them with:
