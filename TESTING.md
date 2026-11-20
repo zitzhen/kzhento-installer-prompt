@@ -10,7 +10,7 @@
 
 ```sh
 OUT=/path/to/deb-output
-DEB="$OUT"/kubuntu-installer-prompt_*_amd64.deb
+DEB="$OUT"/kzhento-installer-prompt_*_amd64.deb
 ```
 
 ## 1. 静态检查（零风险） / Static checks (zero risk)
@@ -44,8 +44,8 @@ docker run --rm -it -v "$OUT:/out:ro" ubuntu:26.04 bash
 # 容器内 / inside the container（若需要 universe 里的包，先启用 universe / enable universe first）:
 apt update
 apt install -y /out/*.deb
-dpkg -L kubuntu-installer-prompt
-apt-cache show kubuntu-installer-prompt
+dpkg -L kzhento-installer-prompt
+apt-cache show kzhento-installer-prompt
 ```
 
 无显示环境下的冒烟测试：

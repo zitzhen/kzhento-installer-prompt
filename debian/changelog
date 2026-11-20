@@ -1,5 +1,6 @@
-kubuntu-installer-prompt (26.04.3) UNRELEASED; urgency=medium
+kzhento-installer-prompt (26.04.3) UNRELEASED; urgency=medium
 
+  * Rename the Debian package to kzhento-installer-prompt.
   * Restart xdg-desktop-portal.service when Try Kubuntu is clicked
     (LP: #2164684)
 

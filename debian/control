@@ -1,4 +1,4 @@
-Source: kubuntu-installer-prompt
+Source: kzhento-installer-prompt
 Maintainer: Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
 Uploaders: Aaron Rainbolt <arraybolt3@gmail.com>
 Section: misc
@@ -17,7 +17,7 @@ Vcs-Git: git://git.launchpad.net/~kubuntu-packagers/kubuntu-packaging/+git/kubun
 Homepage: https://kubuntu.org
 Rules-Requires-Root: no
 
-Package: kubuntu-installer-prompt
+Package: kzhento-installer-prompt
 Architecture: any
 Depends: calamares-settings-kubuntu, ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
