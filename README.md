@@ -61,7 +61,7 @@ Translators can then fill in the new template; the compiled translation is picke
 
 ## Naming kept from upstream
 
-The following names are intentionally unchanged from the Kubuntu original so the ISO integration and packaging keep working: the executable `kubuntu-installer-prompt`, the Debian package name, `scripts/start-kubuntu-live-env`, `scripts/change-system-language`, `kubuntu-live-environment.desktop`, and the translation file names. Only the CMake project name was changed, to `kzhento-installer-prompt`.
+The following names are intentionally unchanged from the Kubuntu original so the ISO integration keeps working: the executable `kubuntu-installer-prompt`, `scripts/start-kubuntu-live-env`, `scripts/change-system-language`, `kubuntu-live-environment.desktop`, and the translation file names. The CMake project and the Debian source/binary package were renamed to `kzhento-installer-prompt`; the resulting deb is named `kzhento-installer-prompt_<version>_<arch>.deb`.
 
 ## Artwork and licensing
 
