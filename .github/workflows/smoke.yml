@@ -1,0 +1,76 @@
+name: Smoke test
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # 在 ubuntu:26.04 容器里编译、运行并显示 GUI
+  smoke:
+    name: Build and smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 编译并冒烟测试 / Build and smoke test
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/.ci-out"
+          docker run --rm -i \
+            -v "$GITHUB_WORKSPACE:/src:ro" \
+            -v "$GITHUB_WORKSPACE/.ci-out:/out" \
+            ubuntu:26.04 bash -s <<'SCRIPT'
+          set -euo pipefail
+          bash /src/.github/scripts/setup-build-env.sh
+
+          cmake -S /src -B /tmp/build -DCMAKE_BUILD_TYPE=Release
+          cmake --build /tmp/build -j"$(nproc)"
+          DESTDIR=/tmp/stage cmake --install /tmp/build >/dev/null
+
+          BIN=/tmp/stage/usr/bin/kubuntu-installer-prompt
+          file "$BIN"
+          if ldd "$BIN" | grep -q 'not found'; then
+            echo 'Missing shared libraries:' >&2
+            ldd "$BIN" | grep 'not found' >&2
+            exit 1
+          fi
+
+          # 无显示环境冒烟：124 表示进程正常存活
+          set +e
+          timeout 5 env LANG=C.UTF-8 QT_QPA_PLATFORM=offscreen "$BIN"
+          rc=$?
+          set -e
+          echo "offscreen smoke exit=$rc"
+          if [ "$rc" -ne 124 ] && [ "$rc" -ne 0 ]; then
+            exit 1
+          fi
+
+          # 虚拟屏下渲染 GUI 并截图
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1280x800x24 -nolisten tcp >/tmp/xvfb.log 2>&1 &
+          XPID=$!
+          sleep 1
+          env LANG=C.UTF-8 DISPLAY=:99 "$BIN" >/tmp/gui.log 2>&1 &
+          GPID=$!
+          sleep 6
+          if ! kill -0 "$GPID" 2>/dev/null; then
+            echo 'GUI process exited early' >&2
+            cat /tmp/gui.log >&2
+            exit 1
+          fi
+          import -window root /out/gui.png
+          kill "$GPID" "$XPID" 2>/dev/null || true
+          echo 'GUI screenshot captured'
+          SCRIPT
+
+      - name: 上传 GUI 截图 / Upload GUI screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: gui-screenshot
+          path: .ci-out/gui.png
+          if-no-files-found: error

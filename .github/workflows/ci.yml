@@ -1,0 +1,57 @@
+name: CI gate
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # 无 Qt 依赖，快速失败
+  gate:
+    name: Validate sources
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 校验 XML 与 qrc 资源 / Validate XML and qrc resources
+        run: |
+          python3 - <<'PY'
+          import glob
+          import os
+          import sys
+          import xml.etree.ElementTree as ET
+
+          files = (
+              glob.glob('src/**/*.ui', recursive=True)
+              + glob.glob('src/**/*.qrc', recursive=True)
+              + glob.glob('src/**/*.ts', recursive=True)
+          )
+          for path in files:
+              try:
+                  ET.parse(path)
+              except ET.ParseError as exc:
+                  print(f'XML parse error in {path}: {exc}', file=sys.stderr)
+                  sys.exit(1)
+          print(f'Parsed {len(files)} XML files')
+
+          root = ET.parse('src/resource.qrc').getroot()
+          for node in root.iter('file'):
+              resource = os.path.normpath(os.path.join('src', node.text))
+              if not os.path.exists(resource):
+                  print(f'Missing qrc resource: {resource}', file=sys.stderr)
+                  sys.exit(1)
+          print('All qrc resources exist')
+          PY
+
+      - name: 检查行尾空白 / Check trailing whitespace
+        run: |
+          if git grep -n -I -e '[[:blank:]]$' -- \
+              '*.c' '*.cpp' '*.h' '*.sh' 'CMakeLists.txt' '*.yml' '*.md' '*.ui' '*.qrc'; then
+            echo 'Trailing whitespace found' >&2
+            exit 1
+          fi
