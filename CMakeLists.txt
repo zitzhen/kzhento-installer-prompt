@@ -15,7 +15,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network LinguistTools)
 find_package(KF6 REQUIRED COMPONENTS NetworkManagerQt)
 
-file(GLOB TS_FILES "src/translations/kubuntu-installer-prompt_*.ts")
+file(GLOB TS_FILES "src/translations/kzhento-installer-prompt_*.ts")
 
 set(PROJECT_SOURCES
     src/main.cpp
@@ -61,18 +61,23 @@ install(TARGETS kzhento-installer-prompt
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-# Keep the historical command name as a compatibility symlink so existing
-# ISO integration that execs "kubuntu-installer-prompt" keeps working.
-# Use a literal "bin" here: CMAKE_INSTALL_BINDIR is not set in install(CODE)
-# when a packaging build overrides the install prefix, which would otherwise
-# place the link at $prefix/ instead of $prefix/bin/.
+install(PROGRAMS "scripts/change-system-language" DESTINATION libexec)
+install(PROGRAMS "scripts/start-kzhento-live-env" DESTINATION libexec)
+install(FILES "kzhento-live-environment.desktop" DESTINATION share/wayland-sessions)
+
+# Keep the historical command and session names as compatibility symlinks so
+# the base ISO (which hardcodes both) keeps working. Use literal paths here:
+# CMAKE_INSTALL_BINDIR is not set in install(CODE) when a packaging build
+# overrides the install prefix, which would otherwise place the link at
+# $prefix/ instead of $prefix/bin/.
 install(CODE [[
   set(_bindir "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin")
   file(REMOVE "${_bindir}/kubuntu-installer-prompt")
   file(CREATE_LINK "kzhento-installer-prompt" "${_bindir}/kubuntu-installer-prompt" SYMBOLIC)
+
+  set(_sessiondir "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/wayland-sessions")
+  file(REMOVE "${_sessiondir}/kubuntu-live-environment.desktop")
+  file(CREATE_LINK "kzhento-live-environment.desktop" "${_sessiondir}/kubuntu-live-environment.desktop" SYMBOLIC)
 ]])
-install(PROGRAMS "scripts/change-system-language" DESTINATION libexec)
-install(PROGRAMS "scripts/start-kubuntu-live-env" DESTINATION libexec)
-install(FILES "kubuntu-live-environment.desktop" DESTINATION share/wayland-sessions)
 
 qt_finalize_executable(kzhento-installer-prompt)

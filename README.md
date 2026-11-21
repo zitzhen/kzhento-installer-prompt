@@ -13,8 +13,8 @@ This is a KzhenTo-specific derivative of Kubuntu's `kubuntu-installer-prompt`, m
 
 ## Boot flow (Wayland)
 
-1. SDDM loads, and Casper points `/etc/sddm.conf` at the `kubuntu-live-environment.desktop` session. The filename is retained for compatibility with the base ISO.
-2. The session runs `/usr/libexec/start-kubuntu-live-env`.
+1. SDDM loads, and Casper points `/etc/sddm.conf` at the `kzhento-live-environment.desktop` session. A `kubuntu-live-environment.desktop` compatibility symlink is installed because the base ISO hardcodes the old session name.
+2. The session runs `/usr/libexec/start-kzhento-live-env`.
 3. The script starts `kwin_wayland --xwayland --no-lockscreen` with `kzhento-installer-prompt` as its client (or `calamares-launch-oem` in OEM mode).
 4. The prompt appears and the user chooses **Try KzhenTo** or **Install KzhenTo**.
 5. **Install KzhenTo** runs `xhost si:localuser:root` followed by `sudo QT_QPA_PLATFORMTHEME=kde calamares -D8`, then hides the buttons. When Calamares closes, the prompt exits.
@@ -35,7 +35,7 @@ cmake --build build
 cmake --install build
 ```
 
-The install prefix is `/usr`. The build installs the `kzhento-installer-prompt` binary (with a `kubuntu-installer-prompt` compatibility symlink), the `change-system-language` and `start-kubuntu-live-env` helpers under `libexec`, and the live-session desktop entry under `share/wayland-sessions`.
+The install prefix is `/usr`. The build installs the `kzhento-installer-prompt` binary (with a `kubuntu-installer-prompt` compatibility symlink), the `change-system-language` and `start-kzhento-live-env` helpers under `libexec`, and the `kzhento-live-environment.desktop` entry under `share/wayland-sessions` (with a `kubuntu-live-environment.desktop` compatibility symlink).
 
 ## Testing
 
@@ -55,13 +55,13 @@ To add a language:
 
 1. Add its locale code to `langList` in `gen_ts.sh` and run the script.
 2. Re-run CMake so the `file(GLOB ...)` in `CMakeLists.txt` picks up the new `.ts` file.
-3. Add a matching `<file alias="LOCALE">kubuntu-installer-prompt_LOCALE.qm</file>` line inside the `<qresource>` tag in `src/translations.qrc`.
+3. Add a matching `<file alias="LOCALE">kzhento-installer-prompt_LOCALE.qm</file>` line inside the `<qresource>` tag in `src/translations.qrc`.
 
 Translators can then fill in the new template; the compiled translation is picked up at runtime according to the system locale.
 
-## Naming kept from upstream
+## Naming and compatibility
 
-The executable, the CMake project and the Debian source/binary package are all named `kzhento-installer-prompt`; the resulting deb is named `kzhento-installer-prompt_<version>_<arch>.deb`. A `/usr/bin/kubuntu-installer-prompt` compatibility symlink is installed so older ISO integrations that still exec the old command keep working. The following names are intentionally unchanged from the Kubuntu original: `scripts/start-kubuntu-live-env`, `scripts/change-system-language`, `kubuntu-live-environment.desktop`, and the translation file names.
+The executable, CMake project, Debian source/binary package, live-session desktop file, live-env helper and all translation templates are named `kzhento-*`. Two compatibility symlinks are installed so the base ISO keeps working: `/usr/bin/kubuntu-installer-prompt` (old command name) and `/usr/share/wayland-sessions/kubuntu-live-environment.desktop` (old session name hardcoded by Casper). The helper `scripts/change-system-language` keeps its upstream name.
 
 ## Artwork and licensing
 

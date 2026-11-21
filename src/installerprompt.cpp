@@ -47,8 +47,8 @@ InstallerPrompt::InstallerPrompt(QWidget *parent)
 
     initLanguageComboBox();
 
-    connect(ui->tryKubuntu, &QPushButton::clicked, this, &InstallerPrompt::onTryClicked);
-    connect(ui->installKubuntu, &QPushButton::clicked, this, &InstallerPrompt::onInstallClicked);
+    connect(ui->tryKzhento, &QPushButton::clicked, this, &InstallerPrompt::onTryClicked);
+    connect(ui->installKzhento, &QPushButton::clicked, this, &InstallerPrompt::onInstallClicked);
     connect(ui->languageComboBox, SIGNAL(activated(int)), this, SLOT(onLanguageSelected(int)));
     connect(ui->networkComboBox, SIGNAL(activated(int)), this, SLOT(onNetworkSelected(int)));
 
@@ -109,10 +109,10 @@ void InstallerPrompt::onTryClicked()
 
 void InstallerPrompt::onInstallClicked()
 {
-    ui->tryKubuntu->setEnabled(false);
-    ui->installKubuntu->setEnabled(false);
-    ui->tryKubuntu->setToolTip("");
-    ui->installKubuntu->setToolTip("");
+    ui->tryKzhento->setEnabled(false);
+    ui->installKzhento->setEnabled(false);
+    ui->tryKzhento->setToolTip("");
+    ui->installKzhento->setToolTip("");
     ui->languageComboBox->setEnabled(false);
     QProcess *calamares = new QProcess(this);
     calamares->setProgram("/usr/bin/xhost");
