@@ -4,7 +4,7 @@
         <file alias="logo">../img/kzhento-logo.png</file>
         <file alias="arrow-down">../img/arrow-down.svg</file>
         <file alias="warning-icon">../img/dialog-warning.svg</file>
-        <file alias="usb-drive">../img/usb-drive.svg</file>
-        <file alias="hdd-drive">../img/hdd-drive.svg</file>
+        <file alias="usb-drive">../img/usb-drive.png</file>
+        <file alias="hdd-drive">../img/hdd-drive.png</file>
     </qresource>
 </RCC>

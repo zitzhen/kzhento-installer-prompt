@@ -66,11 +66,10 @@ The executable, CMake project, Debian source/binary package, live-session deskto
 ## Artwork and licensing
 
 - `img/kzhento-logo.png` — **The KzhenTo Logo. Copyright (C) 2026 ZIT Studio. All rights reserved.** Adapted from artwork published at <https://github.com/zitzhen/kzhento-icon>. This artwork is **excluded** from the GPL-3.0 license covering the rest of this project; no permission to use, copy, modify, or distribute it is granted here. Contact ZIT Studio for permission.
-- `img/background.png` — Copyright (C) 2024 Fábio Maricato and Michael Mikowski. CC0-1.0 Universal. Designed for Kubuntu.
+- `img/background.png`, `img/usb-drive.png`, `img/hdd-drive.png` — **Artworks created for KzhenTo by ZIT Studio. Copyright (C) 2026 ZIT Studio. All rights reserved.** These images are artistic works and are **excluded** from the GPL-3.0 license covering the rest of this project; no permission to use, copy, modify, or distribute them is granted here. Contact ZIT Studio for permission.
 - `img/arrow-down.svg`, `img/dialog-warning.svg` — Copyright (C) 2014 Uri Herrera and others. LGPL-3.0-or-later. From the Breeze icon theme.
-- `img/usb-drive.svg`, `img/hdd-drive.svg` — Copyright (C) 2014 Uri Herrera and others, Copyright (C) 2024 Kubuntu Contributors. LGPL-3.0-or-later. Adapted from the Breeze icon theme.
 
-All other files are licensed under GPL-3.0-or-later. Original copyright: 2022 Lubuntu Developers and 2024 Kubuntu Developers; derivative changes copyright 2026 ZIT Studio. The unmodified GPL-3.0 text, together with the ZIT Studio derivative notice, is in `LICENSE`.
+All other files (except the artworks listed above) are licensed under GPL-3.0-or-later. Original copyright: 2022 Lubuntu Developers and 2024 Kubuntu Developers; derivative changes copyright 2026 ZIT Studio. The unmodified GPL-3.0 text, together with the ZIT Studio derivative notice, is in `LICENSE`.
 
 ## Origin
 
