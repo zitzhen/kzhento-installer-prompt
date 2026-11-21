@@ -1,3 +1,9 @@
+kzhento-installer-prompt (1.0.3) unstable; urgency=medium
+
+  * Refactor file structure
+
+ -- Oliver Lin <oliver@liuxiaozhen.dev>  Sat, 21 Nov 2026 14:54:24 +0800
+
 kzhento-installer-prompt (1.0.2) unstable; urgency=medium
 
   * Declare Replaces/Breaks against kubuntu-installer-prompt so the
