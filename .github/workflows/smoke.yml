@@ -32,8 +32,9 @@ jobs:
           cmake --build /tmp/build -j"$(nproc)"
           DESTDIR=/tmp/stage cmake --install /tmp/build >/dev/null
 
-          BIN=/tmp/stage/usr/bin/kubuntu-installer-prompt
+          BIN=/tmp/stage/usr/bin/kzhento-installer-prompt
           file "$BIN"
+          test -L /tmp/stage/usr/bin/kubuntu-installer-prompt
           if ldd "$BIN" | grep -q 'not found'; then
             echo 'Missing shared libraries:' >&2
             ldd "$BIN" | grep 'not found' >&2
